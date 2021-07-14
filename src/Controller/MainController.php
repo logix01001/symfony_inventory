@@ -26,12 +26,11 @@ class MainController extends AbstractController
         
         $form = $this->createForm(MainSearchType::class);
 
-        
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
           $search =  $form->get('search')->getData();
-          
           $products = $this->getDoctrine()
               ->getRepository(Product::class)
               ->SearchString($search);
